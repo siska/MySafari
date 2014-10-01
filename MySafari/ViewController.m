@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
@@ -42,5 +42,23 @@
 - (IBAction)onBackButtonPressed:(id)sender {
     [self.webView goBack];
 }
+
+- (IBAction)onForwardButtonPressed:(id)sender {
+    [self.webView goForward];
+}
+
+- (IBAction)onStopLoadingButtonPressed:(id)sender {
+    [self.webView stopLoading];
+}
+
+- (IBAction)onReloadButtonPressed:(id)sender {
+    [self.webView reload];
+}
+
+
+
+
+
+
 
 @end
