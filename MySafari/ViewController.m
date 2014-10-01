@@ -8,7 +8,10 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 
 @end
 
@@ -19,9 +22,12 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//the below method just hides the keyboard once the user hits enter. we're coopting it to perform other actions because it's convenient for us
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSURL *url = [NSURL URLWithString:self.urlTextField.text];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    
+    return YES;
 }
 
 @end
