@@ -22,12 +22,25 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
 //the below method just hides the keyboard once the user hits enter. we're coopting it to perform other actions because it's convenient for us
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSURL *url = [NSURL URLWithString:self.urlTextField.text];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:urlRequest];
     
     return YES;
+}
+
+- (IBAction)onBackButtonPressed:(id)sender {
+    [self.webView goBack];
 }
 
 @end
