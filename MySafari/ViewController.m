@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *forwardButton;
+@property (weak, nonatomic) IBOutlet UILabel *webPageTitleLabel;
 
 @end
 
@@ -40,11 +41,17 @@
         self.forwardButton.hidden = YES;
     }
 
+    self.webPageTitleLabel.text = @"";
+
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     self.urlTextField.text = [self.webView.request.URL absoluteString];
+
+    NSString *webPageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    self.webPageTitleLabel.text = webPageTitle;
+
 }
 
 //the below method just hides the keyboard once the user hits enter. we're coopting it to perform other actions because it's convenient for us
