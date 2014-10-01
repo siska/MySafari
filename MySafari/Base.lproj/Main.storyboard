@@ -35,7 +35,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="71f-Jr-nE7">
                                 <rect key="frame" x="0.0" y="559" width="600" height="41"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fI-4V-bK3">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fI-4V-bK3">
                                         <rect key="frame" x="15" y="3" width="30" height="30"/>
                                         <state key="normal" title="&lt;">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -62,7 +62,7 @@
                                             <action selector="onReloadButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1jJ-iQ-nUA"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g03-S0-EmJ">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g03-S0-EmJ">
                                         <rect key="frame" x="276" y="3" width="30" height="30"/>
                                         <state key="normal" title=">">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -90,6 +90,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="9fI-4V-bK3" id="CWL-5U-YjC"/>
+                        <outlet property="forwardButton" destination="g03-S0-EmJ" id="uDk-ky-8Lr"/>
                         <outlet property="urlTextField" destination="Zig-Df-4Xd" id="Rwc-3k-fny"/>
                         <outlet property="webView" destination="Skq-rp-Gcm" id="x0t-nM-Sb5"/>
                     </connections>
