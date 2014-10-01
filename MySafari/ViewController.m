@@ -53,10 +53,19 @@
     return YES;
 }
 
+// review after - refactor with method to add http
 - (void)loadWebPageWithString:(NSString *)urlString {
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:urlRequest];
+    if (![urlString hasPrefix:@"http://"]) {
+        NSString *newURLString = [NSString stringWithFormat:@"http://%@", urlString];
+        NSURL *url = [NSURL URLWithString:newURLString];
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:urlRequest];
+    } else {
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:urlRequest];
+    }
+
 }
 
 - (IBAction)onBackButtonPressed:(id)sender {
@@ -75,6 +84,11 @@
     [self.webView reload];
 }
 
+- (IBAction)onPlusButtonPressed:(id)sender {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Coming Soon" message:@"New Features Are On The Way" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+
+    [alertView show];
+}
 
 
 
