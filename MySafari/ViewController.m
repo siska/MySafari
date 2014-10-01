@@ -8,13 +8,14 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate>
+@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *forwardButton;
 @property (weak, nonatomic) IBOutlet UILabel *webPageTitleLabel;
+@property CGFloat lastContentOffset;
 
 @end
 
@@ -23,8 +24,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.webView.scrollView.delegate = self;
+
     [self loadWebPageWithString:@"http://www.google.com"];
 }
+
+#pragma mark - UITextFieldDelegate
+
+//the below method just hides the keyboard once the user hits enter. we're coopting it to perform other actions because it's convenient for us
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self loadWebPageWithString:textField.text];
+
+    return YES;
+}
+
+#pragma mark - UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -54,13 +68,6 @@
 
 }
 
-//the below method just hides the keyboard once the user hits enter. we're coopting it to perform other actions because it's convenient for us
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self loadWebPageWithString:textField.text];
-
-    return YES;
-}
-
 // review after - refactor with method to add http
 - (void)loadWebPageWithString:(NSString *)urlString {
     if (![urlString hasPrefix:@"http://"]) {
@@ -75,6 +82,22 @@
     }
 
 }
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.lastContentOffset > scrollView.contentOffset.y) {
+        //NSLog(@"Scrolling up");
+        self.urlTextField.hidden = NO;
+    } else if (self.lastContentOffset < scrollView.contentOffset.y) {
+        //NSLog(@"Scrolling down");
+        self.urlTextField.hidden = YES;
+    }
+
+    self.lastContentOffset = scrollView.contentOffset.y;
+}
+
+#pragma mark - Button Actions
 
 - (IBAction)onBackButtonPressed:(id)sender {
     [self.webView goBack];
@@ -97,10 +120,5 @@
 
     [alertView show];
 }
-
-
-
-
-
 
 @end

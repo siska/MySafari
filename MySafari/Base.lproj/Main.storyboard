@@ -18,20 +18,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Skq-rp-Gcm">
-                                <rect key="frame" x="0.0" y="82" width="600" height="478"/>
+                                <rect key="frame" x="0.0" y="51" width="600" height="509"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Vdc-uD-dCy"/>
                                 </connections>
                             </webView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a URL" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Zig-Df-4Xd">
-                                <rect key="frame" x="0.0" y="20" width="600" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="mNf-N7-rMa"/>
-                                </connections>
-                            </textField>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="71f-Jr-nE7">
                                 <rect key="frame" x="0.0" y="559" width="600" height="41"/>
                                 <subviews>
@@ -86,23 +78,34 @@
                                     <constraint firstAttribute="bottom" secondItem="9fI-4V-bK3" secondAttribute="bottom" constant="8" id="LV5-tc-Ljf"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRu-L1-wcD">
-                                <rect key="frame" x="0.0" y="50" width="600" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="RRu-L1-wcD">
+                                <rect key="frame" x="0.0" y="20" width="600" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a URL" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Zig-Df-4Xd">
+                                <rect key="frame" x="0.0" y="51" width="600" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="mNf-N7-rMa"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Zig-Df-4Xd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="MZK-rJ-SRx"/>
-                            <constraint firstItem="RRu-L1-wcD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Mo8-Ts-ujG"/>
+                            <constraint firstItem="Skq-rp-Gcm" firstAttribute="top" secondItem="RRu-L1-wcD" secondAttribute="bottom" constant="1" id="1IZ-IA-Tlt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zig-Df-4Xd" secondAttribute="trailing" constant="-16" id="3lC-gr-Ujs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RRu-L1-wcD" secondAttribute="trailing" constant="-16" id="J9r-ff-IvT"/>
+                            <constraint firstItem="RRu-L1-wcD" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="PUF-uh-ybh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Zig-Df-4Xd" secondAttribute="trailing" constant="-16" id="QRh-um-3Eq"/>
                             <constraint firstItem="Skq-rp-Gcm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="TGp-BC-Mls"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RRu-L1-wcD" secondAttribute="trailing" constant="-16" id="ZkE-Sj-z1q"/>
+                            <constraint firstItem="Zig-Df-4Xd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="UPU-He-tYx"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="71f-Jr-nE7" secondAttribute="bottom" id="bts-FM-ocy"/>
-                            <constraint firstItem="RRu-L1-wcD" firstAttribute="top" secondItem="Zig-Df-4Xd" secondAttribute="bottom" id="sgT-ym-15c"/>
-                            <constraint firstItem="Zig-Df-4Xd" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="svY-4Q-K47"/>
+                            <constraint firstItem="RRu-L1-wcD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="d65-6X-ngv"/>
+                            <constraint firstItem="Zig-Df-4Xd" firstAttribute="top" secondItem="RRu-L1-wcD" secondAttribute="bottom" constant="1" id="hKe-ve-fQX"/>
+                            <constraint firstItem="Skq-rp-Gcm" firstAttribute="top" secondItem="RRu-L1-wcD" secondAttribute="bottom" constant="30" id="vFz-ac-EoU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Skq-rp-Gcm" secondAttribute="trailing" constant="-16" id="yKq-w5-1ve"/>
                         </constraints>
                     </view>
