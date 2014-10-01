@@ -44,6 +44,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    self.urlTextField.text = [self.webView.request.URL absoluteString];
 }
 
 //the below method just hides the keyboard once the user hits enter. we're coopting it to perform other actions because it's convenient for us
@@ -58,7 +59,7 @@
     if (![urlString hasPrefix:@"http://"]) {
         NSString *newURLString = [NSString stringWithFormat:@"http://%@", urlString];
         NSURL *url = [NSURL URLWithString:newURLString];
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url]; //instance methods - used to refer to the actual instances, e.g. an instance method would refer to *urlRequest - to the right (starting with NSURLRequest) is a class with a class method affecting it. Aove with self.urlTextField.text = [self.webview.etc. we have an instance method affecting an instance, which is our url string.
         [self.webView loadRequest:urlRequest];
     } else {
         NSURL *url = [NSURL URLWithString:urlString];
